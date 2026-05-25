@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<title>소댕 프로필</title>
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: 'Jua', Pretendard, Arial, sans-serif;
+  background:
+    radial-gradient(circle at 10% 10%, #ffe3ef 0 8%, transparent 20%),
+    radial-gradient(circle at 90% 20%, #f5d9ff 0 7%, transparent 18%),
+    linear-gradient(180deg, #fff6fb 0%, #ffffff 55%);
+  color: #3f2b35;
+}
+
+.wrap { max-width: 1040px; margin: 40px auto 0; padding: 0 24px 0; }
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 42px;
+  align-items: center;
+  min-height: 440px;
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 199, 225, 0.9);
+  border-radius: 42px;
+  padding: 52px;
+  box-shadow: 0 24px 70px rgba(255, 143, 189, 0.22);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "♡";
+  position: absolute;
+  right: 70px;
+  top: 42px;
+  font-size: 82px;
+  color: rgba(255, 159, 200, 0.18);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  right: -120px;
+  bottom: -120px;
+  width: 320px;
+  height: 320px;
+  background: #ffe3ef;
+  border-radius: 50%;
+}
+
+.hero-text { position: relative; z-index: 2; }
+
+.sub {
+  display: inline-block;
+  color: #e889b5;
+  background: #fff0f7;
+  border: 1px solid #ffd3e6;
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 12px;
+  letter-spacing: 4px;
+  font-weight: 800;
+  margin-bottom: 18px;
+  margin-right: 6px;
+}
+
+h1 {
+  font-size: 62px;
+  font-weight: 600;
+  margin: 0 0 22px;
+  color: #2f2430;
+  letter-spacing: 3px;
+}
+
+.hero-text p {
+  color: #7a6670;
+  line-height: 1.9;
+  margin: 4px 0;
+  font-size: 15px;
+}
+
+.hero-img-wrap {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-img {
+  width: 300px;
+  height: 300px;
+  border-radius: 44px;
+  padding: 9px;
+  background: linear-gradient(135deg, #ff9fc8, #ffddec, #f4c7ff);
+  transform: rotate(3deg);
+  box-shadow: 0 24px 50px rgba(255, 143, 189, 0.3);
+}
+
+.hero-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 34px;
+  display: block;
+  transition: opacity 0.45s ease;
+}
+
+.hero-img img.fade-out {
+  opacity: 0;
+}
+
+.status-badge {
+  position: absolute;
+  right: 12px;
+  bottom: -14px;
+  background: white;
+  border: 1px solid #ffd4e7;
+  border-radius: 999px;
+  padding: 12px 18px;
+  color: #d95b95;
+  font-weight: 800;
+  box-shadow: 0 12px 28px rgba(255, 143, 189, 0.25);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.menu {
+  display: block;
+  margin-top: 32px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.tags span {
+  background: #fff0f7;
+  border: 1px solid #ffc4dd;
+  color: #d95b95;
+  border-radius: 999px;
+  padding: 0 17px;
+  font-size: 13px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  line-height: 1;
+}
+
+.menu {
+  display: block;
+  margin-top: 32px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.menu button {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ffbdd8;
+  background: white;
+  color: #d95b95;
+  border-radius: 999px;
+  padding: 14px 24px;
+  font-size: 18px;
+  font-weight: 900;
+  transition: 0.25s ease;
+  cursor: pointer;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 10px 24px rgba(255, 170, 205, 0.14);
+}
+
+.menu button::after {
+  content: "↓";
+  font-size: 17px;
+  line-height: 1;
+  transform: translateY(-1px);
+}
+
+.menu button:hover,
+.menu button.active {
+  background: linear-gradient(135deg, #ff8fbd, #ffb6d5);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.section-title { margin: 58px 0 20px; }
+
+.section-title small {
+  color: #e889b5;
+  letter-spacing: 8px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.section-title h2 {
+  margin: 8px 0 0;
+  font-size: 28px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.card {
+  background: rgba(255,255,255,0.86);
+  border: 1px solid #ffe0ed;
+  border-radius: 28px;
+  padding: 26px;
+  min-height: 118px;
+  box-shadow: 0 14px 30px rgba(255, 170, 205, 0.14);
+}
+
+.label {
+  color: #c884a3;
+  font-size: 12px;
+  margin-bottom: 13px;
+  font-weight: 700;
+}
+
+.value {
+  font-weight: 900;
+  font-size: 17px;
+}
+
+.schedule {
+  margin-top: 20px;
+  background: linear-gradient(135deg, #fff0f7, #fffafd);
+  border: 1px solid #ffcce2;
+  border-radius: 34px;
+  padding: 38px;
+  box-shadow: 0 18px 42px rgba(255, 154, 196, 0.17);
+}
+
+.schedule b {
+  color: #c94f88;
+  font-size: 20px;
+}
+
+.days {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 12px;
+}
+
+.day-pill {
+  height: 70px;
+  border-radius: 24px;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  font-weight: 900;
+  color: white;
+  box-shadow: 0 12px 26px rgba(255, 143, 189, 0.22);
+}
+
+.day-pink { background: linear-gradient(135deg, #ff8fbd, #ffb6d5); }
+.day-half { background: linear-gradient(135deg, #ff9fc8 0 50%, #d8d8de 50% 100%); }
+.day-gray { background: linear-gradient(135deg, #cfcfd6, #eeeef2); color: #7a7078; }
+
+.links-section {
+  margin-top: 20px;
+  padding: 46px 34px;
+  background: rgba(255,255,255,0.78);
+  backdrop-filter: blur(12px);
+  border: 1px solid #ffe0ed;
+  border-radius: 34px;
+  box-shadow: 0 18px 44px rgba(255, 154, 196, 0.15);
+}
+
+.links-title {
+  text-align: center;
+  margin-bottom: 34px;
+}
+
+.links-title h2 {
+  margin: 0;
+  font-size: 32px;
+  letter-spacing: 3px;
+}
+
+.links-title p {
+  margin-top: 10px;
+  color: #b17693;
+  font-size: 14px;
+}
+
+.link-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  width: 100%;
+}
+
+.link-card {
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  background: #ffffff;
+  border: 1px solid #ffe1ee;
+  border-radius: 24px;
+  padding: 18px 22px;
+  color: #3f2b35;
+  font-weight: 900;
+  font-size: 24px;
+  box-shadow: 0 10px 24px rgba(255, 170, 205, 0.12);
+  transition: 0.25s ease;
+  cursor: pointer;
+}
+
+.link-card:hover {
+  transform: translateY(-4px);
+  border-color: #ffacd0;
+  box-shadow: 0 18px 36px rgba(255, 154, 196, 0.24);
+}
+
+.icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  background: #fff0f7;
+  font-size: 20px;
+}
+
+.link-card b { color: #e889b5; font-size: 20px; }
+
+.footer {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  color: #c884a3;
+  font-size: 12px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(63, 43, 53, 0.48);
+  z-index: 9999;
+  place-items: center;
+  padding: 20px;
+}
+
+.modal.show { display: grid; }
+
+.modal-box {
+  width: min(94vw, 920px);
+  max-height: 88vh;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ffd4e7;
+  border-radius: 38px;
+  padding: 40px;
+  box-shadow: 0 24px 70px rgba(255, 143, 189, 0.35);
+  position: relative;
+}
+
+.closet-modal { width: min(98vw, 1280px); }
+
+.close {
+  position: absolute;
+  right: 22px;
+  top: 18px;
+  border: none;
+  background: #fff0f7;
+  color: #d95b95;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+#modal-title {
+  margin: 0 0 20px;
+  color: #c94f88;
+}
+
+.popup-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 68px;
+  margin: 24px 0 4px;
+  padding: 20px 34px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, #ff8fbd, #ffb6d5);
+  color: white;
+  font-size: 20px;
+  font-weight: 900;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 14px 30px rgba(255, 143, 189, 0.3);
+}
+
+.discord-warning {
+  margin-top: -4px;
+  margin-bottom: 14px;
+  font-size: 13px;
+  color: #d95b95;
+  font-weight: 800;
+}
+
+.closet-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.closet-item {
+  position: relative;
+  background: linear-gradient(180deg, #fff7fb, #ffffff);
+  border: 1px solid #ffe0ed;
+  border-radius: 28px;
+  padding: 14px;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 14px 30px rgba(255, 170, 205, 0.16);
+}
+
+.closet-number {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff8fbd, #ffb6d5);
+  color: white;
+  font-weight: 900;
+  font-size: 15px;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 8px 18px rgba(255, 143, 189, 0.35);
+  z-index: 2;
+}
+
+.closet-grid img {
+  width: 100%;
+  height: 500px;
+  object-fit: contain;
+  border-radius: 22px;
+}
+
+
+.page { display: block; }
+.page.hidden { display: none; }
+
+.closet-page-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  margin: 0 0 18px;
+  padding: 14px 0;
+  background: transparent;
+  display: grid;
+  grid-template-columns: 190px 1fr 190px;
+  align-items: center;
+  gap: 16px;
+}
+
+.home-btn {
+  border: 1px solid #ffbdd8;
+  background: white;
+  color: #d95b95;
+  border-radius: 999px;
+  padding: 13px 24px;
+  font-weight: 900;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(255, 170, 205, 0.16);
+  transition: 0.25s ease;
+}
+
+.home-btn:hover {
+  background: linear-gradient(135deg, #ff8fbd, #ffb6d5);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.closet-page-title {
+  text-align: center;
+  margin: 0;
+}
+
+.closet-page-title small {
+  color: #e889b5;
+  letter-spacing: 8px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.closet-page-title h1 {
+  margin: 4px 0 0;
+  font-size: 38px;
+}
+
+
+.closet-tags {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.closet-tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.closet-tag-row-extra {
+  margin-bottom: 6px;
+}
+
+.closet-tag-row-common {
+  min-height: 26px;
+}
+
+.closet-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 24px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1;
+  box-shadow: 0 6px 14px rgba(80, 60, 70, 0.14);
+}
+
+.tag-common {
+  background: rgba(255, 245, 176, 0.96);
+  border: 1px solid #ffd96a;
+  color: #9a7200;
+}
+
+.tag-animal {
+  background: rgba(255, 226, 241, 0.96);
+  border: 1px solid #ffafd0;
+  color: #d95b95;
+}
+
+.tag-outer {
+  background: rgba(220, 242, 255, 0.96);
+  border: 1px solid #9bdcff;
+  color: #3196c9;
+}
+
+.tag-skirt {
+  background: rgba(233, 224, 255, 0.96);
+  border: 1px solid #c8b5ff;
+  color: #7a5bd9;
+}
+
+.tag-hat {
+  background: rgba(224, 255, 235, 0.96);
+  border: 1px solid #9fe6b8;
+  color: #3c9b5b;
+}
+
+.closet-tag-button {
+  cursor: pointer;
+  font-family: inherit;
+  pointer-events: auto;
+}
+
+.knit-preview-img {
+  width: 100%;
+  max-height: 72vh;
+  object-fit: contain;
+  border-radius: 24px;
+  background: #fff7fb;
+  border: 1px solid #ffe0ed;
+}
+
+
+.closet-expand-handle {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 18px;
+  height: 100%;
+  border: none;
+  border-left: 1px solid #9bdcff;
+  border-radius: 0 28px 28px 0;
+  background: rgba(232, 248, 255, 0.78);
+  color: #3196c9;
+  font-family: inherit;
+  font-weight: 900;
+  font-size: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: -4px 0 12px rgba(49, 150, 201, 0.10);
+  z-index: 4;
+  transition: 0.25s ease;
+}
+
+.closet-expand-handle::before {
+  content: "›";
+  font-size: 28px;
+  line-height: 1;
+  display: block;
+  transform: translateY(-1px);
+}
+
+.closet-expand-handle:hover {
+  width: 22px;
+  background: rgba(215, 242, 255, 0.95);
+}
+
+
+#closet-page {
+  height: 100vh;
+  overflow-y: auto;
+  padding-bottom: 40px;
+}
+
+#closet-page .closet-page-header {
+  position: sticky;
+  top: 0;
+  background: transparent;
+}
+
+@media (max-width: 1000px) {
+  .closet-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 820px) {
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 38px 26px;
+  }
+
+  .hero-img-wrap { order: -1; }
+  .tags, .menu { justify-content: center; }
+  .grid, .link-list { grid-template-columns: 1fr; }
+  .days { grid-template-columns: repeat(4, 1fr); }
+  h1 { font-size: 46px; }
+}
+
+@media (max-width: 620px) {
+  .closet-page-header {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+
+  .closet-page-title {
+    width: 100%;
+    text-align: center;
+  }
+
+  .closet-grid { grid-template-columns: 1fr; }
+  .closet-item { min-height: 480px; }
+  .closet-grid img { height: 460px; }
+}
+</style>
+</head>
+
+<body>
+<div id="home-page" class="page wrap">
+
+  <section class="hero">
+    <div class="hero-text">
+      <div class="sub">VIRTUAL</div>
+      <div class="sub">STREAMER</div>
+      <h1>소댕</h1>
+
+      <p>나를 좋아해주는 사람은 나도 좋아 🩷</p>
+      <p>나를 싫어하는 사람은 죽었으면 💀</p>
+      <p>팬닉: <b>OO댕</b></p>
+
+      <div class="tags">
+        <span>#소통</span>
+        <span>#게임</span>
+        <span>#큐티</span>
+        <span>#섹시</span>
+        <span>#뉴걸</span>
+        <span>#ENFJ</span>
+      </div>
+
+      <div class="menu">
+        <button class="active" onclick="goLinks()">커뮤니티 바로가기</button>
+      </div>
+    </div>
+
+    <div class="hero-img-wrap">
+      <div class="hero-img">
+        <img id="profile-slide" src="sodaeng.png" alt="소댕 프로필 이미지">
+      </div>
+      <div class="status-badge">오후 7시 ON AIR 💗</div>
+    </div>
+  </section>
+
+  <div class="section-title">
+    <small>PROFILE</small>
+    <h2>소댕 프로필</h2>
+  </div>
+
+  <div class="grid">
+    <div class="card"><div class="label">🎂 생일</div><div class="value">01월 29일</div></div>
+    <div class="card"><div class="label">🗓 데뷔</div><div class="value">2026. 04. 07</div></div>
+    <div class="card"><div class="label">🎨 좋아하는색</div><div class="value">완전 핑크</div></div>
+    <div class="card"><div class="label">🩷 MBTI</div><div class="value">ENFJ</div></div>
+    <div class="card"><div class="label">📏 키</div><div class="value">163.7cm</div></div>
+    <div class="card"><div class="label">🎮 콘텐츠</div><div class="value">소통 · 게임 · FPS</div></div>
+  </div>
+
+  <div class="section-title">
+    <small>STREAM SCHEDULE</small>
+    <h2>방송 스케쥴</h2>
+  </div>
+
+  <div class="schedule">
+    <b>💗 소댕 방송 일정 💗</b>
+    <p>💗 주말은 격주 휴방! / 평균 오후 7시 방송 on 💗</p>
+    <div class="days">
+      <div class="day-pill day-pink">월</div>
+      <div class="day-pill day-pink">화</div>
+      <div class="day-pill day-pink">수</div>
+      <div class="day-pill day-pink">목</div>
+      <div class="day-pill day-pink">금</div>
+      <div class="day-pill day-half">토</div>
+      <div class="day-pill day-gray">일</div>
+    </div>
+  </div>
+
+  <div class="section-title" id="links">
+    <small>LINKS</small>
+    <h2>소댕 커뮤니티</h2>
+  </div>
+
+  <section class="links-section">
+    <div class="links-title">
+      <h2>소댕 바로가기</h2>
+      <p>소댕이를 더 알고싶다면 이곳으로!</p>
+    </div>
+
+    <div class="link-list">
+      <a class="link-card" href="https://www.sooplive.com/station/tq2918/post/196313431" target="_blank">
+        <span class="icon">⭐</span>
+        <span>채팅 규칙</span>
+        <b>→</b>
+      </a>
+
+      <div class="link-card" onclick="showClosetPage()">
+        <span class="icon">👗</span>
+        <span>옷장</span>
+        <b>→</b>
+      </div>
+
+      <a class="link-card" href="https://docs.google.com/spreadsheets/d/1Wz7Phj5X02K2CsqGPxCHeP8U9wcFUJlRTInjL0NK5qM/edit?usp=sharing" target="_blank">
+        <span class="icon">🛵</span>
+        <span>배달</span>
+        <b>→</b>
+      </a>
+
+      <a class="link-card" href="https://weflab.com/user/lOPU2suWmGRoaQ" target="_blank">
+        <span class="icon">🎰</span>
+        <span>룰렛 확률</span>
+        <b>→</b>
+      </a>
+
+      <a class="link-card" href="https://www.sooplive.com/station/tq2918/post/192695275" target="_blank">
+        <span class="icon">🩵</span>
+        <span>댕그니처</span>
+        <b>→</b>
+      </a>
+
+      <div class="link-card" onclick="openDiscord('시참 디코', joinDiscord)">
+        <span class="icon">📞</span>
+        <span>시참 디코</span>
+        <b>→</b>
+      </div>
+
+      <div class="link-card" onclick="openDiscord('뉴걸시티 디코', newgirlDiscord)">
+        <span class="icon">📱</span>
+        <span>뉴걸시티 디코</span>
+        <b>→</b>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">
+    Designed for Sodaeng · Profile MADE by SINON
+  </div>
+
+</div>
+
+<div id="closet-page" class="page hidden wrap">
+  <div class="closet-page-header">
+    <button class="home-btn" onclick="showHomePage()">← 홈으로 돌아가기</button>
+
+    <div class="closet-page-title">
+      <small>CLOSET</small>
+      <h1>소댕 옷장</h1>
+    </div>
+
+    <div></div>
+  </div>
+
+  <div id="closet-page-content" class="closet-grid"></div>
+</div>
+
+<div id="modal" class="modal" onclick="closeByBackground(event)">
+  <div id="modal-box" class="modal-box">
+    <button class="close" onclick="closeModal()">×</button>
+    <h2 id="modal-title"></h2>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<script>
+
+const profileImages = [
+  "sodaeng.png",
+  "sodaeng2.png",
+  "sodaeng3.png",
+  "sodaeng4.png"
+];
+
+let profileIndex = 0;
+
+setInterval(() => {
+  const slide = document.getElementById("profile-slide");
+  if (!slide || profileImages.length <= 1) return;
+
+  slide.classList.add("fade-out");
+
+  setTimeout(() => {
+    profileIndex = (profileIndex + 1) % profileImages.length;
+    slide.src = profileImages[profileIndex];
+    slide.classList.remove("fade-out");
+  }, 450);
+}, 3000);
+
+const joinDiscord = "https://discord.gg/aPTR8CjBPg";
+const newgirlDiscord = "https://discord.com/invite/kCeabWTxQp";
+
+const closetImages = [
+  "outfit1.png",
+  "outfit2.png",
+  "outfit3.png",
+  "outfit4.png",
+  "outfit5.png",
+  "outfit6.png",
+  "outfit7.png",
+  "outfit8.png",
+  "outfit9.png",
+  "outfit10.png",
+  "outfit11.png",
+  "outfit12.png",
+  "outfit13.png",
+  "outfit14.png",
+  "outfit15.png",
+  "outfit16.png"
+];
+
+const closetOptions = [
+  { common: ["양말", "스타킹", "신발"], extra: ["동물귀"] },
+  { common: ["양말", "스타킹", "신발"], extra: [] },
+  { common: ["양말", "스타킹", "신발"], extra: [] },
+  { common: ["양말", "스타킹", "신발"], extra: [] },
+  { common: ["양말", "스타킹", "신발"], extra: ["동물귀"] },
+  { common: ["양말", "스타킹", "신발"], extra: ["겉옷"] },
+  { common: ["양말", "스타킹", "신발"], extra: ["겉옷", "치마"] },
+  { common: ["양말", "스타킹", "신발"], extra: ["겉옷"] },
+  { common: ["양말", "신발"], extra: [] },
+  { common: ["양말", "신발"], extra: [] },
+  { common: ["양말", "신발"], extra: ["모자"] },
+  { common: ["양말", "신발"], extra: ["모자"] },
+  { common: ["양말", "신발"], extra: ["모자"] },
+  { common: ["양말", "신발"], extra: ["겉옷"] },
+  { common: ["양말", "신발"], extra: ["겉옷"] },
+  { common: ["양말", "신발"], extra: [] }
+];
+
+function getTagClass(tag) {
+  if (tag === "동물귀") return "tag-animal";
+  if (tag === "겉옷" || tag === "겉니트") return "tag-outer";
+  if (tag === "치마") return "tag-skirt";
+  if (tag === "모자") return "tag-hat";
+  return "tag-common";
+}
+
+function renderTag(tag, index) {
+  if (index === 7 && tag === "예시") {
+    return `<button class="closet-tag closet-tag-button tag-outer" onclick="event.stopPropagation(); openKnitPreview()">예시</button>`;
+  }
+  return `<span class="closet-tag ${getTagClass(tag)}">${tag}</span>`;
+}
+
+
+function renderExpandHandle(index) {
+  if (index !== 7) return "";
+  return `<button class="closet-expand-handle" onclick="event.stopPropagation(); openKnitPreview()">펼쳐보기</button>`;
+}
+
+function renderClosetTags(index) {
+  const option = closetOptions[index];
+  return `
+    <div class="closet-tags">
+      ${option.extra.length ? `
+        <div class="closet-tag-row closet-tag-row-extra">
+          ${option.extra.map(tag => renderTag(tag, index)).join("")}
+        </div>
+      ` : ""}
+      <div class="closet-tag-row closet-tag-row-common">
+        ${option.common.map(tag => renderTag(tag, index)).join("")}
+      </div>
+    </div>
+  `;
+}
+
+function goLinks() {
+  document.getElementById("links").scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+}
+
+
+function showClosetPage() {
+  document.getElementById("home-page").classList.add("hidden");
+  document.getElementById("closet-page").classList.remove("hidden");
+  document.getElementById("closet-page-content").innerHTML = closetImages.map((img, index) => `
+    <div class="closet-item">
+      <div class="closet-number">${index + 1}</div>
+      <img src="${img}" alt="소댕 옷장 이미지 ${index + 1}">
+      ${renderClosetTags(index)}
+      ${renderExpandHandle(index)}
+    </div>
+  `).join("");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function showHomePage() {
+  document.getElementById("closet-page").classList.add("hidden");
+  document.getElementById("home-page").classList.remove("hidden");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function openDiscord(title, link) {
+  document.getElementById("modal-box").classList.remove("closet-modal");
+  document.getElementById("modal-title").innerText = title;
+
+  const warning = title === "뉴걸시티 디코"
+    ? `<p class="discord-warning">시청자 및 추 입장금지!</p>`
+    : "";
+
+  document.getElementById("modal-content").innerHTML = `
+    <p>아래 버튼을 누르면 디스코드 링크로 이동해요.</p>
+    ${warning}
+    <a class="popup-btn" href="${link}" target="_blank">디스코드 입장하기</a>
+  `;
+  openModal();
+}
+
+function openCloset() {
+  document.getElementById("modal-box").classList.add("closet-modal");
+  document.getElementById("modal-title").innerText = "소댕 옷장";
+  document.getElementById("modal-content").innerHTML = `
+    <div class="closet-grid">
+      ${closetImages.map((img, index) => `
+        <div class="closet-item">
+          <div class="closet-number">${index + 1}</div>
+          <img src="${img}" alt="소댕 옷장 이미지 ${index + 1}">
+          ${renderClosetTags(index)}
+          ${renderExpandHandle(index)}
+        </div>
+      `).join("")}
+    </div>
+  `;
+  openModal();
+}
+
+
+function openKnitPreview() {
+  document.getElementById("modal-box").classList.remove("closet-modal");
+  document.getElementById("modal-title").innerText = "8번 겉니트 OFF 예시";
+  document.getElementById("modal-content").innerHTML = `
+    <img class="knit-preview-img" src="outfit8_knit_off.png" alt="8번 겉니트 OFF 예시 이미지">
+  `;
+  openModal();
+}
+
+function openModal() {
+  document.getElementById("modal").classList.add("show");
+}
+
+function closeModal() {
+  document.getElementById("modal").classList.remove("show");
+}
+
+function closeByBackground(event) {
+  if (event.target.id === "modal") closeModal();
+}
+</script>
+
+</body>
+</html>
