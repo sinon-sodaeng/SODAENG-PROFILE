@@ -803,15 +803,17 @@ h1 {
         <b>→</b>
       </a>
 
-      <div class="link-card" onclick="openDiscord('시참 디코', joinDiscord)">
-        <span class="icon">📞</span>
-        <span>시참 디코</span>
+      <a class="link-card"
+         href="https://cafe.naver.com/daengdaeng1004?iframe_url=/MyCafeIntro.nhn%3Fclubid=31724244"
+         target="_blank">
+        <span class="icon">☕</span>
+        <span>네이버 카페</span>
         <b>→</b>
-      </div>
+      </a>
 
-      <div class="link-card" onclick="openDiscord('뉴걸시티 디코', newgirlDiscord)">
-        <span class="icon">📱</span>
-        <span>뉴걸시티 디코</span>
+      <div class="link-card" onclick="openDiscordMenu()">
+        <span class="icon">💬</span>
+        <span>디스코드</span>
         <b>→</b>
       </div>
     </div>
@@ -976,18 +978,20 @@ function showHomePage() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-function openDiscord(title, link) {
+function openDiscordMenu() {
   document.getElementById("modal-box").classList.remove("closet-modal");
-  document.getElementById("modal-title").innerText = title;
-
-  const warning = title === "뉴걸시티 디코"
-    ? `<p class="discord-warning">시청자 및 추 입장금지!</p>`
-    : "";
+  document.getElementById("modal-title").innerText = "디스코드";
 
   document.getElementById("modal-content").innerHTML = `
-    <p>아래 버튼을 누르면 디스코드 링크로 이동해요.</p>
-    ${warning}
-    <a class="popup-btn" href="${link}" target="_blank">디스코드 입장하기</a>
+    <p class="discord-warning">(뉴걸시티) 시청자 및 추 입장금지!</p>
+
+    <a class="popup-btn" href="${joinDiscord}" target="_blank">
+      시참 디스코드
+    </a>
+
+    <a class="popup-btn" href="${newgirlDiscord}" target="_blank">
+      뉴걸시티 디스코드
+    </a>
   `;
   openModal();
 }
