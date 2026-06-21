@@ -592,6 +592,28 @@ h1 {
   color: #3c9b5b;
 }
 
+
+.tag-corset {
+  background: rgba(255,225,205,0.96);
+  border: 1px solid #ffb07a;
+  color: #c7651f;
+}
+.tag-glasses {
+  background: rgba(230,230,230,0.96);
+  border: 1px solid #bdbdbd;
+  color: #555;
+}
+.tag-bag {
+  background: rgba(230,215,190,0.96);
+  border: 1px solid #c9a97a;
+  color: #8a5a2b;
+}
+.tag-icecream {
+  background: rgba(220,255,245,0.96);
+  border: 1px solid #8ee0c3;
+  color: #2f9c7f;
+}
+
 .closet-tag-button {
   cursor: pointer;
   font-family: inherit;
@@ -891,33 +913,67 @@ const closetImages = [
   "outfit13.png",
   "outfit14.png",
   "outfit15.png",
-  "outfit16.png"
+  "outfit16.png",
+  "outfit17.png",
+  "outfit18.png",
+  "outfit19.png",
+  "outfit20.png",
+  "outfit21.png",
+  "outfit22.png",
+  "outfit23.png",
+  "outfit24.png",
+  "outfit25.png",
+  "outfit26.png",
+  "outfit27.png",
+  "outfit28.png",
+  "outfit29.png",
+  "outfit30.png"
 ];
 
 const closetOptions = [
-  { common: ["양말", "스타킹", "신발"], extra: ["동물귀"] },
-  { common: ["양말", "스타킹", "신발"], extra: [] },
-  { common: ["양말", "스타킹", "신발"], extra: [] },
-  { common: ["양말", "스타킹", "신발"], extra: [] },
-  { common: ["양말", "스타킹", "신발"], extra: ["동물귀"] },
-  { common: ["양말", "스타킹", "신발"], extra: ["겉옷"] },
-  { common: ["양말", "스타킹", "신발"], extra: ["겉옷", "치마"] },
-  { common: ["양말", "스타킹", "신발"], extra: ["겉옷"] },
   { common: ["양말", "신발"], extra: [] },
   { common: ["양말", "신발"], extra: [] },
+  { common: ["양말", "신발"], extra: [] },
+  { common: ["양말", "신발"], extra: [] },
+  { common: ["양말", "신발"], extra: [] },
+  { common: ["양말", "신발"], extra: [] },
+  { common: ["양말", "신발"], extra: [] },
+  { common: ["양말", "신발"], extra: [] },
+  { common: ["양말", "신발"], extra: [] },
+  { common: ["양말", "신발"], extra: [] },
+  { common: ["양말", "신발"], extra: [] },
+  { common: ["양말", "신발"], extra: [] },
+  { common: ["양말", "신발"], extra: [] },
+  { common: ["양말", "신발"], extra: [] },
+  { common: ["양말", "신발"], extra: [] },
+  { common: ["양말", "신발"], extra: [] },
+  { common: ["양말", "신발"], extra: ["허리코르셋", "팔토시"] },
+  { common: ["양말", "신발"], extra: [] },
   { common: ["양말", "신발"], extra: ["모자"] },
-  { common: ["양말", "신발"], extra: ["모자"] },
-  { common: ["양말", "신발"], extra: ["모자"] },
+  { common: ["양말", "신발"], extra: ["안경"] },
   { common: ["양말", "신발"], extra: ["겉옷"] },
+  { common: ["양말", "신발"], extra: [] },
   { common: ["양말", "신발"], extra: ["겉옷"] },
+  { common: ["양말", "신발"], extra: ["모자"] },
+  { common: ["양말", "신발"], extra: ["가방", "겉치마", "겉옷"] },
+  { common: ["양말", "신발"], extra: [] },
+  { common: ["양말", "신발"], extra: ["귀", "모자"] },
+  { common: ["양말", "신발"], extra: ["겉옷", "아이스크림"] },
+  { common: ["양말", "신발"], extra: ["겉옷"] },
+  { common: ["양말", "신발"], extra: ["귀", "모자"] },
+  { common: ["양말", "신발"], extra: [] },
   { common: ["양말", "신발"], extra: [] }
 ];
 
 function getTagClass(tag) {
-  if (tag === "동물귀") return "tag-animal";
+  if (tag === "동물귀" || tag === "귀") return "tag-animal";
   if (tag === "겉옷" || tag === "겉니트") return "tag-outer";
-  if (tag === "치마") return "tag-skirt";
+  if (tag === "치마" || tag === "겉치마") return "tag-skirt";
   if (tag === "모자") return "tag-hat";
+  if (tag === "허리코르셋" || tag === "팔토시") return "tag-corset";
+  if (tag === "안경") return "tag-glasses";
+  if (tag === "가방") return "tag-bag";
+  if (tag === "아이스크림") return "tag-icecream";
   return "tag-common";
 }
 
