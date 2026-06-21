@@ -713,6 +713,48 @@ h1 {
   .closet-grid img { height: 460px; }
 }
 </style>
+
+<style>
+.link-list{
+  display:grid !important;
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  gap:18px !important;
+}
+
+.link-card{
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:center !important;
+  min-height:180px !important;
+  padding:20px !important;
+}
+
+.icon{
+  width:90px !important;
+  height:90px !important;
+  font-size:50px !important;
+  margin-bottom:12px !important;
+}
+
+.link-card span:not(.icon){
+  font-size:26px !important;
+  font-weight:900 !important;
+}
+
+.link-card b{
+  margin-top:10px !important;
+  font-size:24px !important;
+}
+
+@media (max-width:820px){
+  .link-list{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  }
+}
+</style>
+
 </head>
 
 <body>
@@ -818,6 +860,14 @@ h1 {
         <span>룰렛 확률</span>
         <b>→</b>
       </a>
+      <a class="link-card"
+      href="https://fancim.me/celeb/profile.aspx?cu_id=g_g0cXS8akU3%20fP24FeWnolXFe0SdGeNsq"
+      target="_blank">
+      <span class="icon">💖</span>
+      <span>팬심</span>
+      <b>→</b>
+      </a>
+
 
       <a class="link-card" href="https://www.sooplive.com/station/tq2918/post/192695275" target="_blank">
         <span class="icon">🩵</span>
